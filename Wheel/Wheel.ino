@@ -20,7 +20,7 @@ const double FEET_TO_METERS = (12 * 2.54) / 100;
 // This enum represents the different display modes of the Gerbil Speedometer
 enum class DisplayMode { Feet, Miles, Kilometers, Meters };
 
-// Function prototypes of display method and interrupt function
+// Function prototypes of the display function and the interrupt function
 void displaySpeedAndSum(DisplayMode current_display_mode, double current_speed_feet, double total_distance_feet);
 void buttonPressed();
 
@@ -85,8 +85,8 @@ void loop() {
 
   // Now a full transition from dark to light has been detected
   // If last_rotation_time is 0, that signifies that this is the first rotation, and we save the time of this rotation so that we can see how much
-  // Time ellapses between this rotation and the next one
-  // else last_rotation_time equals the time of the last rotation, so calculate speed by comparing the current time and the time at last rotation
+  // time passes between this rotation and the next one
+  // Else, this is the second rotation and last_rotation_time stores the time of the last rotation, so calculate speed by comparing the current time and the time at last rotation
   if (last_rotation_time == 0)
   {
     last_rotation_time = millis();
@@ -165,7 +165,7 @@ void displaySpeedAndSum(DisplayMode current_display_mode, double current_speed_f
 
 // The interrupt function called when the button is pressed. This function cycles the display mode
 void buttonPressed() {
-  // Only register button click if it has been 300 milliseconds to debounce
+  // Only register button click if it has been 300 milliseconds to achieve debouncing
   if (millis() - last_button_time < 300)
   {
     return;
